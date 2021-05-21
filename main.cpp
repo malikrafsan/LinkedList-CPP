@@ -29,12 +29,37 @@ void konso(Node** head_ref, int new_data) {
 		*head_ref = new_node;
 		return;
 	}
-
 	while (last->next != NULL)
 		last = last->next;
 
 	last->next = new_node;
 	return;
+}
+
+void insert(Node** head_ref, int new_data, int pos) {
+    Node* walk = *head_ref;
+    Node* prev = NULL;
+
+	Node* new_node = new Node();
+    new_node->data = new_data;
+
+    if (pos == 1){
+        new_node->next = (*head_ref);
+        (*head_ref) = new_node;
+    } else {
+        while (walk != NULL && pos != 1){
+            prev = walk;
+            walk = walk->next;
+            pos--;
+        }
+        if (pos == 1){
+            prev->next = new_node;
+            new_node->next = walk;    
+        }
+        else {
+            log("Posisi invalid");
+        }
+    }
 }
 
 void nodeDelete(Node** head_ref, int key) {
@@ -77,7 +102,8 @@ int main(){
 	Node* head = NULL;
     int choice;
     int data;
-    
+    int pos;
+
     do {
         log("Menu");
         log("1. Mencetak linked list");
@@ -101,12 +127,12 @@ int main(){
                 log("Menu tambah node");
                 log("1. Menambah node di depan");
                 log("2. Menambah node di belakang");
-                //log("3. Menambah node di posisi tertentu");
+                log("3. Menambah node di posisi tertentu");
 
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
                 
-                if (choice >= 1 && choice <= 2){
+                if (choice >= 1 && choice <= 3){
                     std::cout << "Masukkan data baru: ";
                     std::cin >> data;
                 }
@@ -117,16 +143,43 @@ int main(){
                     case 2:
                         konso(&head,data);
                         break;
+                    case 3:
+                        std::cout<<"Masukkan posisi: ";
+                        std::cin>>pos;
+                        if (pos < 1){
+                            log("Posisi invalid!");
+                        } else {
+                            insert(&head,data,pos);
+                        }
+                        break;
                     default:
-                        log("Masukkan salah!");
+                        log("Masukan salah!");
                         break;
                 }
                 break;
             case 3:
-                std::cout << "Masukkan nilai node yang akan dihapus: ";
-                std::cin >> data;
-                
-                nodeDelete(&head,data);
+                log("");
+                log("Menu hapus node");
+                log("1. Menghapus node pertama yang bernilai tertentu");
+                log("2. Menambah node di posisi tertentu");
+
+                std::cout << "Masukkan pilihan: ";
+                std::cin >> choice;
+
+                switch(choice) {
+                    case 1:
+                        std::cout << "Masukkan nilai node yang akan dihapus: ";
+                        std::cin >> data;
+                        nodeDelete(&head,data);
+                        break;
+                    case 2:
+                        std::cout << "Masukkan posisi node yang akan dihapus: ";
+                        std::cin >> pos;
+                        // posDelete(&head,pos);
+                        break;
+                    default:
+                        log("Masukan salah!");
+                }
                 break;
             default:
                 log("Masukkan salah!");
