@@ -18,11 +18,58 @@ void konsDot(Node** head_ref, int new_data) {
 	(*head_ref) = new_node;
 }
 
-void printList(Node *node) {
-	while (node != NULL) {
-		std::cout<<" "<<node->data;
-		node = node->next;
+void konso(Node** head_ref, int new_data) {
+	Node* new_node = new Node();
+	Node *last = *head_ref;
+
+	new_node->data = new_data;
+	new_node->next = NULL;
+
+	if (*head_ref == NULL) {
+		*head_ref = new_node;
+		return;
 	}
+
+	while (last->next != NULL)
+		last = last->next;
+
+	last->next = new_node;
+	return;
+}
+
+void nodeDelete(Node** head_ref, int key) {
+    Node* walk = *head_ref;
+    Node* prev = NULL;
+
+    if (walk != NULL && walk->data == key) {
+        *head_ref = walk->next;
+        delete walk;
+        return;
+    }
+    else {
+        while (walk != NULL && walk->data != key) {
+            prev = walk;
+            walk = walk->next;
+        }
+        if (walk == NULL){
+            log("Nilai tidak ditemukan");
+            return;
+        }
+        prev->next = walk->next;
+    
+        delete walk;
+    }
+}
+
+void printList(Node *node) {
+    if (node == NULL) {
+        log("Linked list kosong");
+    } else {
+        while (node != NULL) {
+            std::cout<<" "<<node->data;
+            node = node->next;
+        }
+    }
     log("");
 }
 
@@ -42,6 +89,7 @@ int main(){
         std::cin >> choice;
         if (choice == 0) {
             log("Exit the program");
+            log("");
             break;
         } else {
             switch(choice) {
@@ -52,7 +100,7 @@ int main(){
                 log("");
                 log("Menu tambah node");
                 log("1. Menambah node di depan");
-                //log("2. Menambah node di belakang");
+                log("2. Menambah node di belakang");
                 //log("3. Menambah node di posisi tertentu");
 
                 std::cout << "Masukkan pilihan: ";
@@ -67,8 +115,7 @@ int main(){
                         konsDot(&head,data);
                         break;
                     case 2:
-                        //fungsi append
-                        log("konso");
+                        konso(&head,data);
                         break;
                     default:
                         log("Masukkan salah!");
@@ -78,11 +125,11 @@ int main(){
             case 3:
                 std::cout << "Masukkan nilai node yang akan dihapus: ";
                 std::cin >> data;
-                //fungsi delete
-                log("delete");
+                
+                nodeDelete(&head,data);
                 break;
             default:
-                log("Masukkan salah");
+                log("Masukkan salah!");
                 break;
             }
         }
