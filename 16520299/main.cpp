@@ -162,6 +162,19 @@ void deleteLastNode(Node** head_ref) {
     log("Node berhasil dihapus");
 }
 
+void deleteLL(Node** head_ref) {
+    Node* walk = *head_ref;
+    Node* next = NULL;
+ 
+    while (walk != NULL) {
+        next = walk->next;
+        delete walk;
+        walk = next;
+    }
+    *head_ref = NULL;
+    log("Semua node berhasil dihapus");
+}
+
 void lengthLL(Node* head){
     int count = 0;
     Node* walk = head;
@@ -242,7 +255,6 @@ void printList(Node *node) {
             node = node->next;
         }
     }
-    log("");
 }
 
 int main(){
@@ -323,6 +335,7 @@ int main(){
                 log("2. Menghapus node di posisi tertentu");
                 log("3. Menghapus node pertama");
                 log("4. Menghapus node terakhir");
+                log("5. Menghapus semua node linked list");
 
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
@@ -347,6 +360,10 @@ int main(){
                     case 4:
                         log("");
                         deleteLastNode(&head);
+                        break;
+                    case 5:
+                        log("");
+                        deleteLL(&head);
                         break;
                     default:
                         log("");
