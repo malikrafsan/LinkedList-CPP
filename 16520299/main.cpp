@@ -224,6 +224,14 @@ void minLL(Node** head_ref) {
     std::cout<<"Nilai minimum dari linked list: "<< min << std::endl;
 }
 
+void isEmpty(Node** head_ref){
+    if (*head_ref == NULL){
+        log("Linked list kosong");
+    }else{
+        log("Linked list tidak kosong");
+    }
+}
+
 void printList(Node *node) {
     if (node == NULL) {
         log("Linked list kosong");
@@ -253,6 +261,7 @@ int main(){
         log("5. Membalik (inverse) linked list");
         log("6. Mencari nilai maksimum");
         log("7. Mencari nilai minimum");
+        log("8. Pengecekan terhadap linked list");
         log("0. exit program");
 
         std::cout << "Masukkan pilihan: ";
@@ -337,7 +346,6 @@ int main(){
                         break;
                     case 4:
                         log("");
-                        //deleteTail(head);
                         deleteLastNode(&head);
                         break;
                     default:
@@ -361,6 +369,26 @@ int main(){
             case 7:
                 log("");
                 minLL(&head);
+                break;
+            case 8:
+                log("");
+                log("> Menu Pengecekan <");
+                log("1. Mengecek apakah linked list kosong");
+                //log("2. ")
+                //log("3. ")
+                std::cout << "Masukkan pilihan: ";
+                std::cin >> choice;
+
+                switch(choice) {
+                    case 1:
+                        log("");
+                        isEmpty(&head);
+                        break;
+                    default:
+                        log("");
+                        log("Masukan salah");
+                        break;
+                }
                 break;
             default:
                 log("");
