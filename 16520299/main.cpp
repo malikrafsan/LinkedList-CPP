@@ -245,6 +245,31 @@ void isEmpty(Node** head_ref){
     }
 }
 
+void checkValue(Node** head_ref, int key){
+    Node* walk = *head_ref;
+
+    if (walk == NULL){
+        log("Linked list kosong");
+        return;
+    }
+    std::cout<<"Nilai "<< key << " ditemukan pada posisi: "<<std::endl;
+    int pos = 1;
+    bool found = false;
+    while (walk != NULL){
+        if (walk->data == key){
+            std::cout<<pos<<" ";
+            found = true;
+        }
+        walk = walk->next;
+        pos++;
+    }
+    if (found==false){
+        log("Tidak ditemukan");
+    } else {
+        log("");
+    }
+}
+
 void printList(Node *node) {
     if (node == NULL) {
         log("Linked list kosong");
@@ -254,6 +279,7 @@ void printList(Node *node) {
             std::cout<<" "<<node->data;
             node = node->next;
         }
+        log("");
     }
 }
 
@@ -391,7 +417,7 @@ int main(){
                 log("");
                 log("> Menu Pengecekan <");
                 log("1. Mengecek apakah linked list kosong");
-                //log("2. ")
+                log("2. Mengecek apakah ada nilai tertentu di linked list");
                 //log("3. ")
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
@@ -400,6 +426,12 @@ int main(){
                     case 1:
                         log("");
                         isEmpty(&head);
+                        break;
+                    case 2:
+                        log("");
+                        std::cout<<"Masukkan data: ";
+                        std::cin>>data;
+                        checkValue(&head,data);
                         break;
                     default:
                         log("");
