@@ -191,6 +191,39 @@ void reverse(Node** head_ref) {
     return;
 }
 
+void maxLL(Node** head_ref) {
+    Node* walk = *head_ref;
+    if (walk == NULL){
+        log("Linked list kosong");
+        return;
+    }
+    int max = walk->data;
+    while (walk != NULL){
+        if (max < walk->data){
+            max = walk->data;
+        }
+        walk = walk->next;
+    }
+    std::cout<<"Nilai maksimum dari linked list: "<< max << std::endl;
+}
+
+void minLL(Node** head_ref) {
+    Node* walk = *head_ref;
+
+    if (walk == NULL){
+        log("Linked list kosong");
+        return;
+    }
+    int min = walk->data;
+    while (walk != NULL){
+        if (min > walk->data){
+            min = walk->data;
+        }
+        walk = walk->next;
+    }
+    std::cout<<"Nilai minimum dari linked list: "<< min << std::endl;
+}
+
 void printList(Node *node) {
     if (node == NULL) {
         log("Linked list kosong");
@@ -218,6 +251,8 @@ int main(){
         log("3. Menghapus node");
         log("4. Mencetak panjang linked list");
         log("5. Membalik (inverse) linked list");
+        log("6. Mencari nilai maksimum");
+        log("7. Mencari nilai minimum");
         log("0. exit program");
 
         std::cout << "Masukkan pilihan: ";
@@ -318,6 +353,14 @@ int main(){
                 log("");
                 reverse(&head);
                 printList(head);
+                break;
+            case 6:
+                log("");
+                maxLL(&head);
+                break;
+            case 7:
+                log("");
+                minLL(&head);
                 break;
             default:
                 log("");
