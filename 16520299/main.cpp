@@ -16,6 +16,8 @@ void konsDot(Node** head_ref, int new_data) {
 	new_node->data = new_data;
 	new_node->next = (*head_ref);
 	(*head_ref) = new_node;
+    log("Node berhasil ditambahkan");
+    return;
 }
 
 void konso(Node** head_ref, int new_data) {
@@ -27,12 +29,14 @@ void konso(Node** head_ref, int new_data) {
 
 	if (*head_ref == NULL) {
 		*head_ref = new_node;
+        log("Node berhasil ditambahkan");
 		return;
 	}
 	while (last->next != NULL)
 		last = last->next;
 
 	last->next = new_node;
+    log("Node berhasil ditambahkan");
 	return;
 }
 
@@ -46,6 +50,8 @@ void insert(Node** head_ref, int new_data, int pos) {
     if (pos == 1){
         new_node->next = (*head_ref);
         (*head_ref) = new_node;
+        log("Node berhasil ditambahkan");
+        return;
     } else {
         while (walk != NULL && pos != 1){
             prev = walk;
@@ -54,10 +60,13 @@ void insert(Node** head_ref, int new_data, int pos) {
         }
         if (pos == 1){
             prev->next = new_node;
-            new_node->next = walk;    
+            new_node->next = walk;  
+            log("Node berhasil ditambahkan");
+            return;  
         }
         else {
             log("Posisi invalid");
+            return;
         }
     }
 }
@@ -74,6 +83,7 @@ void nodeDelete(Node** head_ref, int key) {
     if (walk != NULL && walk->data == key) {
         *head_ref = walk->next;
         delete walk;
+        log("Node berhasil dihapus");
         return;
     }
     else {
@@ -88,6 +98,7 @@ void nodeDelete(Node** head_ref, int key) {
         prev->next = walk->next;
     
         delete walk;
+        log("Node berhasil dihapus");
     }
 }
 
@@ -103,6 +114,7 @@ void posDelete(Node** head_ref, int pos) {
     if (walk != NULL && pos == 1){
         (*head_ref) = walk->next;
         delete walk;
+        log("Node berhasil dihapus");
         return;
     } else {
         while (walk != NULL && pos != 1){
@@ -116,6 +128,7 @@ void posDelete(Node** head_ref, int pos) {
         } else {
             if (pos == 1){
                 prev->next = walk->next;
+                log("Node berhasil dihapus");
                 delete walk; 
             }
             else {
@@ -125,6 +138,30 @@ void posDelete(Node** head_ref, int pos) {
     }
 }
 
+void deleteHead(Node** head_ref){
+    Node* walk = *head_ref;
+    if (walk == NULL){
+        log("Linked list kosong");
+        return;
+    }
+    (*head_ref) = walk->next;
+    delete walk;
+    log("Node berhasil dihapus");
+    return;
+}
+
+void deleteLastNode(Node** head_ref) {
+    if (*head_ref == NULL){
+        log("Linked list kosong");
+        return;
+    }
+    while (*head_ref && (*head_ref)->next)
+        head_ref = &(*head_ref)->next;
+    free(*head_ref);
+    *head_ref = NULL;
+    log("Node berhasil dihapus");
+}
+
 void lengthLL(Node* head){
     int count = 0;
     Node* walk = head;
@@ -132,7 +169,7 @@ void lengthLL(Node* head){
         count++;
         walk = walk->next;
     }
-    std::cout<<count<<std::endl;
+    std::cout<<"Panjang linked list: "<<count<<std::endl;
 }
 
 void reverse(Node** head_ref) {
@@ -158,6 +195,7 @@ void printList(Node *node) {
     if (node == NULL) {
         log("Linked list kosong");
     } else {
+        log("Linked list: ");
         while (node != NULL) {
             std::cout<<" "<<node->data;
             node = node->next;
@@ -173,7 +211,8 @@ int main(){
     int pos;
 
     do {
-        log("Menu");
+        log("===================================");
+        log("Main Menu");
         log("1. Mencetak linked list");
         log("2. Menambah node");
         log("3. Menghapus node");
@@ -196,7 +235,7 @@ int main(){
                 break;
             case 2:
                 log("");
-                log("Menu tambah node");
+                log("> Menu tambah node <");
                 log("1. Menambah node di depan");
                 log("2. Menambah node di belakang");
                 log("3. Menambah node di posisi tertentu");
@@ -235,9 +274,11 @@ int main(){
                 break;
             case 3:
                 log("");
-                log("Menu hapus node");
+                log("> Menu hapus node <");
                 log("1. Menghapus node pertama yang bernilai tertentu");
                 log("2. Menghapus node di posisi tertentu");
+                log("3. Menghapus node pertama");
+                log("4. Menghapus node terakhir");
 
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
@@ -254,6 +295,15 @@ int main(){
                         std::cin >> pos;
                         log("");
                         posDelete(&head,pos);
+                        break;
+                    case 3:
+                        log("");
+                        deleteHead(&head);
+                        break;
+                    case 4:
+                        log("");
+                        //deleteTail(head);
+                        deleteLastNode(&head);
                         break;
                     default:
                         log("");
