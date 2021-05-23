@@ -135,6 +135,25 @@ void lengthLL(Node* head){
     std::cout<<count<<std::endl;
 }
 
+void reverse(Node** head_ref) {
+    Node* current = *head_ref;
+    Node *prev = NULL, *next = NULL;
+
+    if (current == NULL){
+        log("Linked list kosong");
+        return;
+    }
+
+    while (current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    *head_ref = prev;
+    return;
+}
+
 void printList(Node *node) {
     if (node == NULL) {
         log("Linked list kosong");
@@ -159,6 +178,7 @@ int main(){
         log("2. Menambah node");
         log("3. Menghapus node");
         log("4. Mencetak panjang linked list");
+        log("5. Membalik (inverse) linked list");
         log("0. exit program");
 
         std::cout << "Masukkan pilihan: ";
@@ -243,6 +263,11 @@ int main(){
             case 4:
                 log("");
                 lengthLL(head);
+                break;
+            case 5:
+                log("");
+                reverse(&head);
+                printList(head);
                 break;
             default:
                 log("");
