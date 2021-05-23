@@ -66,6 +66,11 @@ void nodeDelete(Node** head_ref, int key) {
     Node* walk = *head_ref;
     Node* prev = NULL;
 
+    if (walk == NULL){
+        log("Linked list kosong");
+        return;
+    }
+
     if (walk != NULL && walk->data == key) {
         *head_ref = walk->next;
         delete walk;
@@ -84,6 +89,50 @@ void nodeDelete(Node** head_ref, int key) {
     
         delete walk;
     }
+}
+
+void posDelete(Node** head_ref, int pos) {
+    Node* walk = *head_ref;
+    Node* prev = NULL;
+
+    if (walk == NULL){
+        log("Linked list kosong");
+        return;
+    }
+
+    if (walk != NULL && pos == 1){
+        (*head_ref) = walk->next;
+        delete walk;
+        return;
+    } else {
+        while (walk != NULL && pos != 1){
+            prev = walk;
+            walk = walk->next;
+            pos--;
+        }
+        if (walk == NULL){
+            log("Posisi invalid");
+            return;
+        } else {
+            if (pos == 1){
+                prev->next = walk->next;
+                delete walk; 
+            }
+            else {
+                log("Posisi invalid");
+            }
+        }
+    }
+}
+
+void lengthLL(Node* head){
+    int count = 0;
+    Node* walk = head;
+    while (walk != NULL) {
+        count++;
+        walk = walk->next;
+    }
+    std::cout<<count<<std::endl;
 }
 
 void printList(Node *node) {
@@ -109,17 +158,20 @@ int main(){
         log("1. Mencetak linked list");
         log("2. Menambah node");
         log("3. Menghapus node");
+        log("4. Mencetak panjang linked list");
         log("0. exit program");
 
         std::cout << "Masukkan pilihan: ";
         std::cin >> choice;
         if (choice == 0) {
+            log("");
             log("Exit the program");
             log("");
             break;
         } else {
             switch(choice) {
             case 1:
+                log("");
                 printList(head);
                 break;
             case 2:
@@ -138,14 +190,17 @@ int main(){
                 }
                 switch(choice) {
                     case 1:
+                        log("");
                         konsDot(&head,data);
                         break;
                     case 2:
+                        log("");
                         konso(&head,data);
                         break;
                     case 3:
                         std::cout<<"Masukkan posisi: ";
                         std::cin>>pos;
+                        log("");
                         if (pos < 1){
                             log("Posisi invalid!");
                         } else {
@@ -153,6 +208,7 @@ int main(){
                         }
                         break;
                     default:
+                        log("");
                         log("Masukan salah!");
                         break;
                 }
@@ -161,7 +217,7 @@ int main(){
                 log("");
                 log("Menu hapus node");
                 log("1. Menghapus node pertama yang bernilai tertentu");
-                log("2. Menambah node di posisi tertentu");
+                log("2. Menghapus node di posisi tertentu");
 
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
@@ -170,18 +226,26 @@ int main(){
                     case 1:
                         std::cout << "Masukkan nilai node yang akan dihapus: ";
                         std::cin >> data;
+                        log("");
                         nodeDelete(&head,data);
                         break;
                     case 2:
                         std::cout << "Masukkan posisi node yang akan dihapus: ";
                         std::cin >> pos;
-                        // posDelete(&head,pos);
+                        log("");
+                        posDelete(&head,pos);
                         break;
                     default:
+                        log("");
                         log("Masukan salah!");
                 }
                 break;
+            case 4:
+                log("");
+                lengthLL(head);
+                break;
             default:
+                log("");
                 log("Masukkan salah!");
                 break;
             }
