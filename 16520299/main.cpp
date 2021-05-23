@@ -288,6 +288,7 @@ int main(){
     int choice;
     int data;
     int pos;
+    int loop;
 
     do {
         log("===================================");
@@ -317,41 +318,87 @@ int main(){
                 break;
             case 2:
                 log("");
-                log("> Menu tambah node <");
-                log("1. Menambah node di depan");
-                log("2. Menambah node di belakang");
-                log("3. Menambah node di posisi tertentu");
-
+                log("Apakah ingin menambahkan satu node saja atau beberapa sekaligus?");
+                log("1. Menambahkan 1 node saja");
+                log("2. Menambahkan beberapa node sekaligus");
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
-                
-                if (choice >= 1 && choice <= 3){
-                    std::cout << "Masukkan data baru: ";
-                    std::cin >> data;
-                }
-                switch(choice) {
-                    case 1:
-                        log("");
-                        konsDot(&head,data);
-                        break;
-                    case 2:
-                        log("");
-                        konso(&head,data);
-                        break;
-                    case 3:
-                        std::cout<<"Masukkan posisi: ";
-                        std::cin>>pos;
-                        log("");
-                        if (pos < 1){
-                            log("Posisi invalid!");
-                        } else {
-                            insert(&head,data,pos);
-                        }
-                        break;
-                    default:
-                        log("");
-                        log("Masukan salah!");
-                        break;
+
+                if (choice == 1){
+                    log("");
+                    log("> Menu tambah node <");
+                    log("1. Menambah node di depan");
+                    log("2. Menambah node di belakang");
+                    log("3. Menambah node di posisi tertentu");
+
+                    std::cout << "Masukkan pilihan: ";
+                    std::cin >> choice;
+                    
+                    if (choice >= 1 && choice <= 3){
+                        std::cout << "Masukkan data baru: ";
+                        std::cin >> data;
+                    }
+                    switch(choice) {
+                        case 1:
+                            log("");
+                            konsDot(&head,data);
+                            break;
+                        case 2:
+                            log("");
+                            konso(&head,data);
+                            break;
+                        case 3:
+                            std::cout<<"Masukkan posisi: ";
+                            std::cin>>pos;
+                            log("");
+                            if (pos < 1){
+                                log("Posisi invalid!");
+                            } else {
+                                insert(&head,data,pos);
+                            }
+                            break;
+                        default:
+                            log("");
+                            log("Masukan salah!");
+                            break;
+                    }
+                } else if (choice == 2) {
+                    log("");
+                    log("> Menu tambah node <");
+                    log("1. Menambah node di depan");
+                    log("2. Menambah node di belakang");
+
+                    std::cout << "Masukkan pilihan: ";
+                    std::cin >> choice;
+
+                    if (choice >= 1 && choice <= 2){
+                        std::cout << "Masukkan berapa kali penambahan: ";
+                        std::cin >> loop;
+                    }
+                    switch(choice) {
+                        case 1:
+                            for (int i=0;i<loop;i++){
+                                std::cout << "Masukkan data baru: ";
+                                std::cin >> data;
+                                konsDot(&head,data);
+                                log("");
+                            }
+                            break;
+                        case 2:
+                            for (int i=0;i<loop;i++){
+                                std::cout << "Masukkan data baru: ";
+                                std::cin >> data;
+                                konso(&head,data);
+                                log("");
+                            }
+                            break;
+                        default:
+                            log("");
+                            log("Masukan salah!");
+                            break;
+                    }
+                } else {
+                    log("Masukan salah!");
                 }
                 break;
             case 3:
