@@ -270,6 +270,25 @@ void checkValue(Node** head_ref, int key){
     }
 }
 
+Node* copyLL(Node** head_ref){
+    Node* walk = *head_ref;
+    Node* copy = NULL;
+
+    while (walk != NULL){
+        konso(&copy,walk->data);
+        walk = walk->next;
+    }
+    return copy;
+}
+
+void concatLL(Node* head, Node* tail){
+    if (head->next == NULL){
+        head->next = tail;
+    } else {
+        concatLL(head->next,tail);
+    }
+}
+
 void printList(Node *node) {
     if (node == NULL) {
         log("Linked list kosong");
@@ -291,7 +310,7 @@ int main(){
     int loop;
 
     do {
-        log("===================================");
+        log("=========================================================");
         log("Main Menu");
         log("1. Mencetak linked list");
         log("2. Menambah node");
@@ -301,6 +320,7 @@ int main(){
         log("6. Mencari nilai maksimum");
         log("7. Mencari nilai minimum");
         log("8. Pengecekan terhadap linked list");
+        log("9. Copy dan concat linked list (double the size of LL)");
         log("0. exit program");
 
         std::cout << "Masukkan pilihan: ";
@@ -484,6 +504,20 @@ int main(){
                         log("");
                         log("Masukan salah");
                         break;
+                }
+                break;
+            case 9:
+                if (head==NULL){
+                    log("");
+                    log("Linked list kosong");
+                } else {
+                    Node* dup = NULL;
+                    log("");
+                    dup = copyLL(&head);
+                    log("");
+                    log("Linked list berhasil di-copy");
+                    concatLL(head,dup);
+                    log("Linked list berhasil di-concat");
                 }
                 break;
             default:
