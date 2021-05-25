@@ -184,7 +184,7 @@ int main(){
                 log("");
                 log("> Menu Pengecekan <");
                 log("1. Mengecek apakah linked list kosong");
-                log("2. Mengecek apakah ada nilai tertentu di linked list");
+                log("2. Mengecek apakah ada nilai tertentu di linked list dan dimana posisinya");
                 //log("3. ")
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
