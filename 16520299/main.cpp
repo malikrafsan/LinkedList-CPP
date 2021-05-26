@@ -2,13 +2,16 @@
 #include <iostream>
 #include "subprogram.hpp"
 
+// MAIN PROGRAM
 int main(){
+    // KAMUS
 	Node* head = NULL;
     int choice;
     int data;
     int pos;
     int loop;
 
+    // ALGORITMA
     do {
         log("=========================================================");
         log("Main Menu");
@@ -23,27 +26,36 @@ int main(){
         log("9. Copy dan concat linked list (double the size of LL)");
         log("0. exit program");
 
+        // Meminta pilihan main menu
         std::cout << "Masukkan pilihan: ";
         std::cin >> choice;
+
+        // Kasus exit program
         if (choice == 0) {
             log("");
-            log("Exit the program");
+            log("Terima kasih telah bermain!");
             log("");
             break;
         } else {
             switch(choice) {
+            // Kasus mencetak linked list
             case 1:
                 log("");
                 printList(head);
                 break;
+
+            // Kasus menambah node
             case 2:
                 log("");
                 log("Apakah ingin menambahkan satu node saja atau beberapa sekaligus?");
                 log("1. Menambahkan 1 node saja");
                 log("2. Menambahkan beberapa node sekaligus");
+                
+                // Meminta pilihan penambahan 1 node atau banyak
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
 
+                // Kasus menambahkan 1 node saja
                 if (choice == 1){
                     log("");
                     log("> Menu tambah node <");
@@ -51,51 +63,68 @@ int main(){
                     log("2. Menambah node di belakang");
                     log("3. Menambah node di posisi tertentu");
 
+                    // Meminta pilihan menu tambah node
                     std::cout << "Masukkan pilihan: ";
                     std::cin >> choice;
                     
+                    // Kasus masukan valid -> meminta data node baru
                     if (choice >= 1 && choice <= 3){
-                        std::cout << "Masukkan data baru: ";
+                        std::cout << "Masukkan data node baru: ";
                         std::cin >> data;
                     }
                     switch(choice) {
+                        // Kasus menambah node di depan
                         case 1:
                             log("");
                             konsDot(&head,data);
                             break;
+                        
+                        // Kasus menambah node di belakang
                         case 2:
                             log("");
                             konso(&head,data);
                             break;
+                        
+                        // Kasus menambah node di posisi tertentu
                         case 3:
+                            // Meminta posisi node baru
                             std::cout<<"Masukkan posisi: ";
                             std::cin>>pos;
                             log("");
+
+                            // Kasus input posisi invalid
                             if (pos < 1){
                                 log("Posisi invalid!");
-                            } else {
+                            } // Kasus input posisi valid 
+                            else {
                                 insert(&head,data,pos);
                             }
                             break;
+                        
+                        // Kasus input pilihan posisi penambahan invalid
                         default:
                             log("");
                             log("Masukan salah!");
                             break;
                     }
-                } else if (choice == 2) {
+                } // Kasus menambah beberapa node sekaligus 
+                else if (choice == 2) {
                     log("");
                     log("> Menu tambah node <");
                     log("1. Menambah node di depan");
                     log("2. Menambah node di belakang");
 
+                    // Meminta input pilihan posisi penambahan node baru
                     std::cout << "Masukkan pilihan: ";
                     std::cin >> choice;
 
+                    // Kasus valid -> meminta berapa kali penambahan
                     if (choice >= 1 && choice <= 2){
                         std::cout << "Masukkan berapa kali penambahan: ";
                         std::cin >> loop;
                     }
                     switch(choice) {
+                        // Kasus menambah node di depan
                         case 1:
                             for (int i=0;i<loop;i++){
                                 std::cout << "Masukkan data baru: ";
@@ -104,6 +133,8 @@ int main(){
                                 log("");
                             }
                             break;
+                        
+                        // Kasus menambah node di belakang
                         case 2:
                             for (int i=0;i<loop;i++){
                                 std::cout << "Masukkan data baru: ";
@@ -112,15 +143,20 @@ int main(){
                                 log("");
                             }
                             break;
+                        
+                        // Kasus input pilihan invalid
                         default:
                             log("");
                             log("Masukan salah!");
                             break;
                     }
-                } else {
+                } // Kasus input pilihan 1 atau beberapa node invalid 
+                else {
                     log("Masukan salah!");
                 }
                 break;
+            
+            // Kasus menghapus node
             case 3:
                 log("");
                 log("> Menu hapus node <");
@@ -130,96 +166,134 @@ int main(){
                 log("4. Menghapus node terakhir");
                 log("5. Menghapus semua node linked list");
 
+                // Meminta input menu hapus node
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
 
                 switch(choice) {
+                    // Kasus menghapus node pertama yang bernilai tertentu
                     case 1:
                         std::cout << "Masukkan nilai node yang akan dihapus: ";
                         std::cin >> data;
                         log("");
                         nodeDelete(&head,data);
                         break;
+                    
+                    // Kasus menghapus node di posisi tertentu
                     case 2:
                         std::cout << "Masukkan posisi node yang akan dihapus: ";
                         std::cin >> pos;
                         log("");
                         posDelete(&head,pos);
                         break;
+                    
+                    // Kasus menghapus node pertama
                     case 3:
                         log("");
                         deleteHead(&head);
                         break;
+                    
+                    // Kasus menghapus node terakhir
                     case 4:
                         log("");
                         deleteLastNode(&head);
                         break;
+                    
+                    // Kasus menghapus semua node linked list
                     case 5:
                         log("");
                         deleteLL(&head);
                         break;
+                    
+                    // Kasus input menu hapus node invalid
                     default:
                         log("");
                         log("Masukan salah!");
                 }
                 break;
+            
+            // Kasus mencetak panjang linked list
             case 4:
                 log("");
                 lengthLL(head);
                 break;
+            
+            // Kasus membalik (inverse) linked list
             case 5:
                 log("");
                 reverse(&head);
                 printList(head);
                 break;
+            
+            // Kasus mencari nilai maksimum
             case 6:
                 log("");
                 maxLL(&head);
                 break;
+            
+            // Kasus mencari nilai minimum
             case 7:
                 log("");
                 minLL(&head);
                 break;
+
+            // Kasus pengecekan terhadap linked list    
             case 8:
                 log("");
                 log("> Menu Pengecekan <");
                 log("1. Mengecek apakah linked list kosong");
-                log("2. Mengecek apakah ada nilai tertentu di linked list dan dimana posisinya");
-                //log("3. ")
+                log("2. Mengecek apakah ada nilai tertentu di linked list dan dimana posisi dan alamatnya");
+                
+                // Meminta input pilihan menu pengecekan
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
 
                 switch(choice) {
+                    // Kasus mengecek apakah linked list kosong
                     case 1:
                         log("");
                         isEmpty(&head);
                         break;
+                    
+                    // Kasus mengecek apakah ada nilai tertentu di linked list dan dimana posisi dan alamatnya
                     case 2:
                         log("");
                         std::cout<<"Masukkan data: ";
                         std::cin>>data;
                         checkValue(&head,data);
                         break;
+                    
+                    // Kasus input pilihan menu pengecekan invalid
                     default:
                         log("");
                         log("Masukan salah");
                         break;
                 }
                 break;
+            
+            // Kasus copy dan concat linked list (double the size of LL)
             case 9:
+                // Kasus linked list kosong
                 if (head==NULL){
                     log("");
                     log("Linked list kosong");
-                } else {
+                } 
+                // Kasus linked list tidak kosong 
+                else {
+                    // Membuat linked list baru dan meng-copy linked list lama
                     Node* dup = NULL;
                     log("");
                     dup = copyLL(&head);
                     log("");
                     log("Linked list berhasil di-copy");
+
+                    // Menggabungkan linked list copy-an dan linked list asli
                     concatLL(head,dup);
                     log("Linked list berhasil di-concat");
                 }
                 break;
+            
+            // Kasus input main menu invalid
             default:
                 log("");
                 log("Masukkan salah!");
