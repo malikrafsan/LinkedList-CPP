@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include <iostream>
 #include "subprogram.hpp"
 
@@ -303,3 +302,7 @@ int main(){
         log("");
     } while(true);
 }
+
+// Author
+// Malik Akbar Hashemi Rafsanjani
+// 16520299
