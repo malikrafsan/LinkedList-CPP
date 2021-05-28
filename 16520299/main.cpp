@@ -23,6 +23,7 @@ int main(){
         log("7. Mencari nilai minimum");
         log("8. Pengecekan terhadap linked list");
         log("9. Copy dan concat linked list (double the size of LL)");
+        log("10. Mensortir linked list");
         log("0. exit program");
 
         // Meminta pilihan main menu
@@ -208,6 +209,7 @@ int main(){
                     default:
                         log("");
                         log("Masukan salah!");
+                        break;
                 }
                 break;
             
@@ -292,6 +294,36 @@ int main(){
                 }
                 break;
             
+            // Kasus mensortir linked list
+            case 10:
+                log("");
+                log("> Menu sortir linked list <");
+                log("1. Sortir linked list terurut membesar");
+                log("2. Sortir linked list terurut mengecil");
+
+                // Meminta input pilihan menu pengecekan
+                std::cout << "Masukkan pilihan: ";
+                std::cin >> choice;
+                
+                log("");
+                switch (choice) {
+                    // Kasus sortir linked list terurut membesar
+                    case 1:
+                        sortingLL(head,true);
+                        break;
+                    
+                    // Kasus sortir linked list terurut mengecil
+                    case 2:
+                        sortingLL(head,false);
+                        break;
+
+                    // Kasus masukan salah
+                    default:
+                        log("Masukan salah!");
+                        break;
+                }
+                break;
+
             // Kasus input main menu invalid
             default:
                 log("");

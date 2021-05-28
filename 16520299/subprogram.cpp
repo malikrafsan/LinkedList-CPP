@@ -406,6 +406,53 @@ void concatLL(Node* head, Node* tail){
     }
 }
 
+void my_swap (Node *node_1, Node *node_2){
+    // I.S. node_1 dan node_2 terdefinisi
+    // F.S. nilai data dari node_1 dan node_2 dibalik
+    
+    // ALGORITMA
+	int temp = node_1->data;
+	node_1->data = node_2 -> data;
+	node_2 -> data = temp;
+}
+
+void sortingLL(Node *head_ref, bool asc){
+    // I.S. head_ref terdefinisi
+    // F.S. linked list tersortir membesar
+    
+    // KAMUS
+	bool swapped;
+	Node *walk;
+	
+    // ALGORITMA
+    // Kasus linked list kosong
+	if (head_ref == NULL){
+	    log("Linked list kosong");
+	    return;
+	}
+    // Mensortir linked list
+	do {
+		swapped = false;
+		walk = head_ref;
+		while (walk->next != NULL){
+			if (walk->data > walk->next->data) {
+				my_swap(walk, walk->next); 
+                swapped = true; 
+			}
+			walk = walk->next;
+		}
+	} while(swapped);
+    
+    // Kasus sortir membesar
+    if (asc){
+        printList(head_ref);
+    } // Kasus sortir mengecil 
+    else {
+        reverse(&head_ref);
+        printList(head_ref);
+    }
+}
+
 void printList(Node *node) {
     // I.S. node terdefinisi
     // F.S ditampilkan ke layar data-data pada linked list
