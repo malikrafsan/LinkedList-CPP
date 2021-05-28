@@ -237,6 +237,40 @@ void deleteLL(Node** head_ref) {
     log("Semua node berhasil dihapus");
 }
 
+void deleteDuplicates(Node *head_ref) {
+    // I.S. head_ref terdefinisi
+    // F.S. nilai pada linked list yang jumlahnya lebih dari 1 dihapus
+
+    // KAMUS
+    Node *traverse, *walk, *dump;
+    traverse = head_ref;
+
+    // ALGORITMA
+    // Kasus linked list kosong
+    if (traverse == NULL) {
+        log("Linked list kosong");
+        return;
+    }
+    // Looping dari node pertama sampai node terakhir 
+    while (traverse != NULL && traverse->next != NULL) {
+        // Lakukan loop ke sisa linked list untuk mengecek tiap node apakah memiliki duplikat
+        walk = traverse;
+        while (walk->next != NULL) {
+            // Jika node selanjutnya merupakan duplikat maka hapus
+            if (traverse->data == walk->next->data) {
+                dump = walk->next;
+                walk->next = walk->next->next;
+                delete dump;
+            } // Jika bukan duplikat maka lanjut
+            else {
+                walk = walk->next;
+            }
+        }
+        traverse = traverse->next;
+    }
+    log("Node duplikat telah dihapus dari linked list");
+}
+
 void lengthLL(Node* head){
     // I.S. head terdefinisi
     // F.S. ditampilkan ke layar panjang linked list

@@ -162,6 +162,7 @@ int main(){
                 log("3. Menghapus node pertama");
                 log("4. Menghapus node terakhir");
                 log("5. Menghapus semua node linked list");
+                log("6. Menghapus semua node duplikat");
 
                 // Meminta input menu hapus node
                 std::cout << "Masukkan pilihan: ";
@@ -202,6 +203,12 @@ int main(){
                         deleteLL(&head);
                         break;
                     
+                    // Kasus menghapus semua node duplikat
+                    case 6:
+                        log("");
+                        deleteDuplicates(head);
+                        break;
+
                     // Kasus input menu hapus node invalid
                     default:
                         log("");

@@ -43,6 +43,10 @@ void deleteLL(Node** head_ref);
 // I.S. head_ref terdefinisi
 // F.S. semua node pada linked list dihapus
 
+void deleteDuplicates(Node *head_ref);
+// I.S. head_ref terdefinisi
+// F.S. nilai pada linked list yang banyaknya lebih dari 1 dihapus
+
 void lengthLL(Node* head);
 // I.S. head terdefinisi
 // F.S. ditampilkan ke layar panjang linked list
