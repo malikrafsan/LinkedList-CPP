@@ -11,6 +11,7 @@ int main(){
     int loop;
 
     // ALGORITMA
+    log("");
     do {
         log("=========================================================");
         log("Main Menu");
@@ -34,16 +35,15 @@ int main(){
             log("");
             break;
         } else {
+            log("");
             switch(choice) {
             // Kasus mencetak linked list
             case 1:
-                log("");
                 printList(head);
                 break;
 
             // Kasus menambah node
             case 2:
-                log("");
                 log("Apakah ingin menambahkan satu node saja atau beberapa sekaligus?");
                 log("1. Menambahkan 1 node saja");
                 log("2. Menambahkan beberapa node sekaligus");
@@ -51,10 +51,10 @@ int main(){
                 // Meminta pilihan penambahan 1 node atau banyak
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
+                log("");
 
                 // Kasus menambahkan 1 node saja
                 if (choice == 1){
-                    log("");
                     log("> Menu tambah node <");
                     log("1. Menambah node di depan");
                     log("2. Menambah node di belakang");
@@ -106,7 +106,6 @@ int main(){
                     }
                 } // Kasus menambah beberapa node sekaligus 
                 else if (choice == 2) {
-                    log("");
                     log("> Menu tambah node <");
                     log("1. Menambah node di depan");
                     log("2. Menambah node di belakang");
@@ -155,7 +154,6 @@ int main(){
             
             // Kasus menghapus node
             case 3:
-                log("");
                 log("> Menu hapus node <");
                 log("1. Menghapus node pertama yang bernilai tertentu");
                 log("2. Menghapus node di posisi tertentu");
@@ -219,14 +217,12 @@ int main(){
             
             // Kasus membalik (inverse) linked list
             case 4:
-                log("");
                 reverse(&head);
                 printList(head);
                 break;
             
             // Kasus pengecekan terhadap linked list    
             case 5:
-                log("");
                 log("> Menu Pengecekan <");
                 log("1. Mengecek apakah linked list kosong");
                 log("2. Mengecek apakah ada nilai tertentu di linked list dan dimana posisi dan alamatnya");
@@ -237,43 +233,39 @@ int main(){
                 // Meminta input pilihan menu pengecekan
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
+                log("");
 
                 switch(choice) {
                     // Kasus mengecek apakah linked list kosong
                     case 1:
-                        log("");
                         isEmpty(&head);
                         break;
                     
                     // Kasus mengecek apakah ada nilai tertentu di linked list dan dimana posisi dan alamatnya
                     case 2:
-                        log("");
                         std::cout<<"Masukkan data: ";
                         std::cin>>data;
+                        log("");
                         checkValue(&head,data);
                         break;
 
                     // Kasus mengecek nilai maksimum pada linked list
                     case 3:
-                        log("");
                         maxLL(&head);
                         break;
                     
                     // Kasus mengecek nilai minimum pada linked list
                     case 4:
-                        log("");
                         minLL(&head);
                         break;
                     
                     // Kasus mengecek panjang linked list
                     case 5:
-                        log("");
                         lengthLL(head);
                         break;
 
                     // Kasus input pilihan menu pengecekan invalid
                     default:
-                        log("");
                         log("Masukan salah");
                         break;
                 }
@@ -283,14 +275,12 @@ int main(){
             case 6:
                 // Kasus linked list kosong
                 if (head==NULL){
-                    log("");
                     log("Linked list kosong");
                 } 
                 // Kasus linked list tidak kosong 
                 else {
                     // Membuat linked list baru dan meng-copy linked list lama
                     Node* dup = NULL;
-                    log("");
                     dup = copyLL(&head);
                     log("");
                     log("Linked list berhasil di-copy");
@@ -303,7 +293,6 @@ int main(){
             
             // Kasus mensortir linked list
             case 7:
-                log("");
                 log("> Menu sortir linked list <");
                 log("1. Sortir linked list terurut membesar");
                 log("2. Sortir linked list terurut mengecil");
@@ -316,12 +305,15 @@ int main(){
                 switch (choice) {
                     // Kasus sortir linked list terurut membesar
                     case 1:
-                        sortingLL(head,true);
+                        sortingLL(head);
+                        printList(head);
                         break;
                     
                     // Kasus sortir linked list terurut mengecil
                     case 2:
-                        sortingLL(head,false);
+                        sortingLL(head);
+                        reverse(&head);
+                        printList(head);
                         break;
 
                     // Kasus masukan salah
@@ -333,7 +325,6 @@ int main(){
 
             // Kasus input main menu invalid
             default:
-                log("");
                 log("Masukkan salah!");
                 break;
             }

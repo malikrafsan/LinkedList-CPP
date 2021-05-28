@@ -226,6 +226,11 @@ void deleteLL(Node** head_ref) {
     Node* next = NULL;
  
     // ALGORITMA
+    // Kasus linked list kosong
+    if (walk == NULL){
+        log("Linked list kosong");
+        return;
+    } 
     // Menghapus node sampai ditemukan ekor linked list
     while (walk != NULL) {
         next = walk->next;
@@ -450,7 +455,7 @@ void my_swap (Node *node_1, Node *node_2){
 	node_2 -> data = temp;
 }
 
-void sortingLL(Node *head_ref, bool asc){
+void sortingLL(Node *head_ref){
     // I.S. head_ref terdefinisi
     // F.S. linked list tersortir membesar
     
@@ -476,15 +481,6 @@ void sortingLL(Node *head_ref, bool asc){
 			walk = walk->next;
 		}
 	} while(swapped);
-    
-    // Kasus sortir membesar
-    if (asc){
-        printList(head_ref);
-    } // Kasus sortir mengecil 
-    else {
-        reverse(&head_ref);
-        printList(head_ref);
-    }
 }
 
 void printList(Node *node) {
@@ -499,7 +495,7 @@ void printList(Node *node) {
         log("Linked list: ");
         // Menampilkan data dari setiap node pada linked list
         while (node != NULL) {
-            std::cout<<node->data<<"->";
+            std::cout<< "("<< node->data << ") -> ";
             node = node->next;
         }
         log("NULL");

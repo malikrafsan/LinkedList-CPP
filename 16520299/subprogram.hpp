@@ -78,9 +78,9 @@ void concatLL(Node* head, Node* tail);
 // I.S. head dan tail terdefinisi
 // F.S. linked list dari head dan tail digabungkan menjadi 1
 
-void sortingLL(Node *head_ref, bool asc);
-    // I.S. head_ref terdefinisi
-    // F.S. linked list tersortir membesar dan ditampilakn ke layar
+void sortingLL(Node *head_ref);
+// I.S. head_ref terdefinisi
+// F.S. linked list tersortir membesar
 
 void printList(Node *node);
 // I.S. node terdefinisi

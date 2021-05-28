@@ -49,7 +49,7 @@ g++ main.cpp subprogram.cpp -o main
     - Check length of linked list 
 6.  Copy and concat linked list (doubling the size)
 7.  Sorting linked list
-8.  Exit program
+0.  Exit program
 
 --- 
 
@@ -60,3 +60,4 @@ g++ main.cpp subprogram.cpp -o main
 - [GeeksforGeeks (Header files in C/C++ and its uses)](https://www.geeksforgeeks.org/header-files-in-c-cpp-and-its-uses/)
 - [Binus University (Single Linked List)](https://socs.binus.ac.id/2017/03/15/single-linked-list/)
 - StackOverFlow (a lot)
+- [ProDeveloperTutorial](https://www.prodevelopertutorial.com/perform-bubble-sort-on-singly-linked-list-solution-in-c/)
