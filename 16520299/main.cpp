@@ -17,13 +17,10 @@ int main(){
         log("1. Mencetak linked list");
         log("2. Menambah node");
         log("3. Menghapus node");
-        log("4. Mencetak panjang linked list");
-        log("5. Membalik (inverse) linked list");
-        log("6. Mencari nilai maksimum");
-        log("7. Mencari nilai minimum");
-        log("8. Pengecekan terhadap linked list");
-        log("9. Copy dan concat linked list (double the size of LL)");
-        log("10. Mensortir linked list");
+        log("4. Membalik (inverse) linked list");
+        log("5. Pengecekan terhadap linked list");
+        log("6. Copy dan concat linked list (double the size of LL)");
+        log("7. Mensortir linked list");
         log("0. exit program");
 
         // Meminta pilihan main menu
@@ -33,7 +30,7 @@ int main(){
         // Kasus exit program
         if (choice == 0) {
             log("");
-            log("Terima kasih telah bermain!");
+            log("Terima kasih telah bermain! :D");
             log("");
             break;
         } else {
@@ -213,37 +210,22 @@ int main(){
                 }
                 break;
             
-            // Kasus mencetak panjang linked list
-            case 4:
-                log("");
-                lengthLL(head);
-                break;
-            
             // Kasus membalik (inverse) linked list
-            case 5:
+            case 4:
                 log("");
                 reverse(&head);
                 printList(head);
                 break;
             
-            // Kasus mencari nilai maksimum
-            case 6:
-                log("");
-                maxLL(&head);
-                break;
-            
-            // Kasus mencari nilai minimum
-            case 7:
-                log("");
-                minLL(&head);
-                break;
-
             // Kasus pengecekan terhadap linked list    
-            case 8:
+            case 5:
                 log("");
                 log("> Menu Pengecekan <");
                 log("1. Mengecek apakah linked list kosong");
                 log("2. Mengecek apakah ada nilai tertentu di linked list dan dimana posisi dan alamatnya");
+                log("3. Mengecek nilai maksimum pada linked list");
+                log("4. Mengecek nilai minimum pada linked list");
+                log("5. Mengecek panjang linked list");
                 
                 // Meminta input pilihan menu pengecekan
                 std::cout << "Masukkan pilihan: ";
@@ -263,7 +245,25 @@ int main(){
                         std::cin>>data;
                         checkValue(&head,data);
                         break;
+
+                    // Kasus mengecek nilai maksimum pada linked list
+                    case 3:
+                        log("");
+                        maxLL(&head);
+                        break;
                     
+                    // Kasus mengecek nilai minimum pada linked list
+                    case 4:
+                        log("");
+                        minLL(&head);
+                        break;
+                    
+                    // Kasus mengecek panjang linked list
+                    case 5:
+                        log("");
+                        lengthLL(head);
+                        break;
+
                     // Kasus input pilihan menu pengecekan invalid
                     default:
                         log("");
@@ -273,7 +273,7 @@ int main(){
                 break;
             
             // Kasus copy dan concat linked list (double the size of LL)
-            case 9:
+            case 6:
                 // Kasus linked list kosong
                 if (head==NULL){
                     log("");
@@ -295,7 +295,7 @@ int main(){
                 break;
             
             // Kasus mensortir linked list
-            case 10:
+            case 7:
                 log("");
                 log("> Menu sortir linked list <");
                 log("1. Sortir linked list terurut membesar");
