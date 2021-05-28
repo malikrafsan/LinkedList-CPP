@@ -39,15 +39,17 @@ g++ main.cpp subprogram.cpp -o main
     - Delete first node
     - Delete last node
     - Delete all nodes
-4. Print length of linked list 
-5. Inverse / reverse linked list
-6. Find maximum value in linked list
-7. Find minimum value in linked list
-8. Check linked list
+    - Delete all duplicate nodes
+4. Inverse / reverse linked list
+5. Check linked list
     - Check whether linked list is empty
     - Check whether certain value is in the linked list and what its address and position
-9.  Copy and concat linked list (doubling the size)
-10. Exit program
+    - Check maximum value in linked list
+    - Check minimum value in linked list
+    - Check length of linked list 
+6.  Copy and concat linked list (doubling the size)
+7.  Sorting linked list
+8.  Exit program
 
 --- 
 
