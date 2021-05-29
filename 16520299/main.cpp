@@ -300,26 +300,33 @@ int main(){
                 // Meminta input pilihan menu pengecekan
                 std::cout << "Masukkan pilihan: ";
                 std::cin >> choice;
-                
                 log("");
-                switch (choice) {
-                    // Kasus sortir linked list terurut membesar
-                    case 1:
-                        sortingLL(head);
-                        printList(head);
-                        break;
-                    
-                    // Kasus sortir linked list terurut mengecil
-                    case 2:
-                        sortingLL(head);
-                        reverse(&head);
-                        printList(head);
-                        break;
 
-                    // Kasus masukan salah
-                    default:
-                        log("Masukan salah!");
-                        break;
+                // Kasus linked list kosong
+                if (head == nullptr){
+                    log("Linked list kosong");
+                } 
+                // Kasus linked list tidak kosong 
+                else {
+                    switch (choice) {
+                        // Kasus sortir linked list terurut membesar
+                        case 1:
+                            sortingLL(head);
+                            printList(head);
+                            break;
+                        
+                        // Kasus sortir linked list terurut mengecil
+                        case 2:
+                            sortingLL(head);
+                            reverse(&head);
+                            printList(head);
+                            break;
+
+                        // Kasus masukan salah
+                        default:
+                            log("Masukan salah!");
+                            break;
+                    }
                 }
                 break;
 
