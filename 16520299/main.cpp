@@ -4,7 +4,7 @@
 // MAIN PROGRAM
 int main(){
     // KAMUS
-	Node* head = NULL;
+	Node* head = nullptr;
     int choice;
     int data;
     int pos;
@@ -274,13 +274,13 @@ int main(){
             // Kasus copy dan concat linked list (double the size of LL)
             case 6:
                 // Kasus linked list kosong
-                if (head==NULL){
+                if (head==nullptr){
                     log("Linked list kosong");
                 } 
                 // Kasus linked list tidak kosong 
                 else {
                     // Membuat linked list baru dan meng-copy linked list lama
-                    Node* dup = NULL;
+                    Node* dup = nullptr;
                     dup = copyLL(&head);
                     log("");
                     log("Linked list berhasil di-copy");

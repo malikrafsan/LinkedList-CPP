@@ -39,15 +39,15 @@ void konso(Node** head_ref, int new_data) {
     // ALGORITMA
     // Mendefinisikan properti node baru
 	new_node->data = new_data;
-	new_node->next = NULL;
+	new_node->next = nullptr;
 
     // Kasus linked list kosong
-	if (*head_ref == NULL) {
+	if (*head_ref == nullptr) {
 		*head_ref = new_node;
         log("Node berhasil ditambahkan");
 		return;
 	} // Mencari ekor dari linked list
-	while (last->next != NULL)
+	while (last->next != nullptr)
 		last = last->next;
 
     // Menambahkan node baru di belakang
@@ -62,7 +62,7 @@ void insert(Node** head_ref, int new_data, int pos) {
     
     // KAMUS
     Node* walk = *head_ref;
-    Node* prev = NULL;
+    Node* prev = nullptr;
 	Node* new_node = new Node();
     
     // ALGORITMA
@@ -77,7 +77,7 @@ void insert(Node** head_ref, int new_data, int pos) {
         return;
     } else {
         // Mencari posisi yang diinginkan sambil mengecek apakah merupakan ekor dari linked list
-        while (walk != NULL && pos != 1){
+        while (walk != nullptr && pos != 1){
             prev = walk;
             walk = walk->next;
             pos--;
@@ -101,16 +101,16 @@ void nodeDelete(Node** head_ref, int key) {
 
     // KAMUS
     Node* walk = *head_ref;
-    Node* prev = NULL;
+    Node* prev = nullptr;
 
     // ALGORITMA
     // Kasus linked list kosong
-    if (walk == NULL){
+    if (walk == nullptr){
         log("Linked list kosong");
         return;
     }
     // Kasus data node pertama = key
-    if (walk != NULL && walk->data == key) {
+    if (walk != nullptr && walk->data == key) {
         *head_ref = walk->next;
         delete walk;
         log("Node berhasil dihapus");
@@ -118,11 +118,11 @@ void nodeDelete(Node** head_ref, int key) {
     }
     else {
         // Mencari node dengan data = key
-        while (walk != NULL && walk->data != key) {
+        while (walk != nullptr && walk->data != key) {
             prev = walk;
             walk = walk->next;
         } // Kasus tidak ditemukan node dengan data = key
-        if (walk == NULL){
+        if (walk == nullptr){
             log("Nilai tidak ditemukan");
             return;
         }
@@ -140,28 +140,28 @@ void posDelete(Node** head_ref, int pos) {
 
     // KAMUS
     Node* walk = *head_ref;
-    Node* prev = NULL;
+    Node* prev = nullptr;
 
     // ALGORITMA
     // Kasus linked list kosong
-    if (walk == NULL){
+    if (walk == nullptr){
         log("Linked list kosong");
         return;
     }
     // Kasus posisi yang dihapus = posisi pertama
-    if (walk != NULL && pos == 1){
+    if (walk != nullptr && pos == 1){
         (*head_ref) = walk->next;
         delete walk;
         log("Node berhasil dihapus");
         return;
     } else {
         // Mencari posisi yangs sesuai
-        while (walk != NULL && pos != 1){
+        while (walk != nullptr && pos != 1){
             prev = walk;
             walk = walk->next;
             pos--;
         } // Kasus posisi lebih dari panjang linked list
-        if (walk == NULL){
+        if (walk == nullptr){
             log("Posisi invalid");
             return;
         } else {
@@ -187,7 +187,7 @@ void deleteHead(Node** head_ref){
     
     // ALGORITMA
     // Kasus linked list kosong
-    if (walk == NULL){
+    if (walk == nullptr){
         log("Linked list kosong");
         return;
     } // Menghapus node pertama
@@ -203,7 +203,7 @@ void deleteLastNode(Node** head_ref) {
     // F.S. dihapuskan node terakhir dari linked list
 
     // Kasus linked list kosong
-    if (*head_ref == NULL){
+    if (*head_ref == nullptr){
         log("Linked list kosong");
         return;
     } // Mencari ekor dari linked list
@@ -212,7 +212,7 @@ void deleteLastNode(Node** head_ref) {
     
     // Menghapus node terakhir
     free(*head_ref);
-    *head_ref = NULL;
+    *head_ref = nullptr;
 
     log("Node berhasil dihapus");
 }
@@ -223,21 +223,21 @@ void deleteLL(Node** head_ref) {
 
     // KAMUS
     Node* walk = *head_ref;
-    Node* next = NULL;
+    Node* next = nullptr;
  
     // ALGORITMA
     // Kasus linked list kosong
-    if (walk == NULL){
+    if (walk == nullptr){
         log("Linked list kosong");
         return;
     } 
     // Menghapus node sampai ditemukan ekor linked list
-    while (walk != NULL) {
+    while (walk != nullptr) {
         next = walk->next;
         delete walk;
         walk = next;
     }
-    *head_ref = NULL;
+    *head_ref = nullptr;
 
     log("Semua node berhasil dihapus");
 }
@@ -252,15 +252,15 @@ void deleteDuplicates(Node *head_ref) {
 
     // ALGORITMA
     // Kasus linked list kosong
-    if (traverse == NULL) {
+    if (traverse == nullptr) {
         log("Linked list kosong");
         return;
     }
     // Looping dari node pertama sampai node terakhir 
-    while (traverse != NULL && traverse->next != NULL) {
+    while (traverse != nullptr && traverse->next != nullptr) {
         // Lakukan loop ke sisa linked list untuk mengecek tiap node apakah memiliki duplikat
         walk = traverse;
-        while (walk->next != NULL) {
+        while (walk->next != nullptr) {
             // Jika node selanjutnya merupakan duplikat maka hapus
             if (traverse->data == walk->next->data) {
                 dump = walk->next;
@@ -286,7 +286,7 @@ void lengthLL(Node* head){
 
     // ALGORITMA
     // Menghitung jumlah node 1 per 1 sampai ditemukan ekor
-    while (walk != NULL) {
+    while (walk != nullptr) {
         count++;
         walk = walk->next;
     }
@@ -300,16 +300,16 @@ void reverse(Node** head_ref) {
 
     // KAMUS
     Node* current = *head_ref;
-    Node *prev = NULL, *next = NULL;
+    Node *prev = nullptr, *next = nullptr;
 
     // ALGORITMA
     // Kasus linked list kosong
-    if (current == NULL){
+    if (current == nullptr){
         log("Linked list kosong");
         return;
     }
     // Membalik arah pointer next sampai node terakhir
-    while (current != NULL) {
+    while (current != nullptr) {
         next = current->next;
         current->next = prev;
         prev = current;
@@ -328,13 +328,13 @@ void maxLL(Node** head_ref) {
     
     // ALGORITMA
     // Kasus linked list kosong
-    if (walk == NULL){
+    if (walk == nullptr){
         log("Linked list kosong");
         return;
     }
     // Mencari data tertinggi
     int max = walk->data;
-    while (walk != NULL){
+    while (walk != nullptr){
         if (max < walk->data){
             max = walk->data;
         }
@@ -353,13 +353,13 @@ void minLL(Node** head_ref) {
 
     // ALGORITMA
     // Kasus linked list kosong
-    if (walk == NULL){
+    if (walk == nullptr){
         log("Linked list kosong");
         return;
     }
     // Mencari data terendah
     int min = walk->data;
-    while (walk != NULL){
+    while (walk != nullptr){
         if (min > walk->data){
             min = walk->data;
         }
@@ -375,7 +375,7 @@ void isEmpty(Node** head_ref){
 
     // ALGORITMA
     // Cek head_ref
-    if (*head_ref == NULL){
+    if (*head_ref == nullptr){
         log("Linked list kosong");
     } else{
         log("Linked list tidak kosong");
@@ -393,14 +393,14 @@ void checkValue(Node** head_ref, int key){
 
     // ALGORITMA
     // Kasus linked list kosong
-    if (walk == NULL){
+    if (walk == nullptr){
         log("Linked list kosong");
         return;
     }
     std::cout<<"Nilai "<< key << " ditemukan pada posisi(alamat): "<<std::endl;
 
     // Mencari posisi dan alamat node yang sesuai
-    while (walk != NULL){
+    while (walk != nullptr){
         if (walk->data == key){
             std::cout<<pos<< "(" <<  &walk <<") ";
             found = true;
@@ -421,11 +421,11 @@ Node* copyLL(Node** head_ref){
 
     // KAMUS
     Node* walk = *head_ref;
-    Node* copy = NULL;
+    Node* copy = nullptr;
 
     // ALGORITMA
     // Menambahkan node di belakang linked list copy-an berdasarkan data dari linked list asli
-    while (walk != NULL){
+    while (walk != nullptr){
         konso(&copy,walk->data);
         walk = walk->next;
     }
@@ -438,7 +438,7 @@ void concatLL(Node* head, Node* tail){
 
     // ALGORITMA
     // Menggunakan metode rekursif sampai ditemukan ekor dari linked list head
-    if (head->next == NULL){
+    if (head->next == nullptr){
         head->next = tail;
     } else {
         concatLL(head->next,tail);
@@ -465,7 +465,7 @@ void sortingLL(Node *head_ref){
 	
     // ALGORITMA
     // Kasus linked list kosong
-	if (head_ref == NULL){
+	if (head_ref == nullptr){
 	    log("Linked list kosong");
 	    return;
 	}
@@ -473,7 +473,7 @@ void sortingLL(Node *head_ref){
 	do {
 		swapped = false;
 		walk = head_ref;
-		while (walk->next != NULL){
+		while (walk->next != nullptr){
 			if (walk->data > walk->next->data) {
 				my_swap(walk, walk->next); 
                 swapped = true; 
@@ -489,15 +489,15 @@ void printList(Node *node) {
 
     // ALGORITMA
     // Penanganan kasus linked list kosong
-    if (node == NULL) {
+    if (node == nullptr) {
         log("Linked list kosong");
     } else {
         log("Linked list: ");
         // Menampilkan data dari setiap node pada linked list
-        while (node != NULL) {
+        while (node != nullptr) {
             std::cout<< "("<< node->data << ") -> ";
             node = node->next;
         }
-        log("NULL");
+        log("nullptr");
     }
 }
