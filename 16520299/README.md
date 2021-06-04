@@ -1,4 +1,4 @@
-# Tugas Magang Dagozilla 2021 Day 2
+# Simple Linked List C++ Program
 
 ## Author
 - Nama    : Malik Akbar Hashemi Rafsanjani
@@ -7,7 +7,7 @@
 ---
 
 ## About The Program
-- This program was developed to complete the Dagozilla ITB Day 2 Internship assignment. This program is about linked list manipulation using the C++ programming language. This program uses the command line interface to request input commands from the user. The commands that can be performed are varied, ranging from adding and deleting nodes in the linked list, in front, behind, in a certain position, adding and deleting multiple nodes at once; reverse the order of the linked list; search for the maximum-minimum value; and many more
+- This program is about linked list manipulation using the C++ programming language. This program uses the command line interface to request input commands from the user. The commands that can be performed are varied, ranging from adding and deleting nodes in the linked list, in front, behind, in a certain position, adding and deleting multiple nodes at once; reverse the order of the linked list; search for the maximum-minimum value; and many more
 
 ---
 
