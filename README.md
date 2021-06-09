@@ -1,4 +1,4 @@
-# Simple Linked List C++ Program
+# No STL Linked List Manipulation C++ Program
 
 ## Author
 - Nama    : Malik Akbar Hashemi Rafsanjani
@@ -7,18 +7,18 @@
 ---
 
 ## About The Program
-- This program is about linked list manipulation using the C++ programming language. This program uses the command line interface to request input commands from the user. The commands that can be performed are varied, ranging from adding and deleting nodes in the linked list, in front, behind, in a certain position, adding and deleting multiple nodes at once; reverse the order of the linked list; search for the maximum-minimum value; and many more
+- This program is about linked list complex manipulation using the C++ programming language. This program doesn't use Standard Template Library (STL) in its implementation, also uses the command line interface to request input commands from the user. The commands that can be performed are varied, ranging from adding and deleting nodes in the linked list, in front, behind, in a certain position, adding and deleting multiple nodes at once; reverse the order of the linked list; search for the maximum-minimum value; and many more.
 
 ---
 
 ## How To Run
 - Clone this repository
-- Change directory to this repository folder and to 16520299 folder
+- Change directory to this repository folder
 - Open shell (bash) terminal and use this command
-```sh
-g++ main.cpp subprogram.cpp -o main
-./main
-```
+    ```sh
+    g++ main.cpp subprogram.cpp -o main
+    ./main
+    ```
 - Enjoy the program! :D
 
 ---
